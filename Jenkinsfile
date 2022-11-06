@@ -10,7 +10,7 @@ pipeline {
     stages {
         stage('YES!!!!!!!!!!!!!!!!!!') {
             steps {
-                sh 'kubectl-- get node'
+                sh 'kubectl get node'
             }
         }
 
@@ -29,7 +29,7 @@ pipeline {
   
     post {
     success {
-      slackSend (color: '#00FF00', message: "Deployment success: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]'")
+      slackSend (color: '#00FF00', message:"Build failed  - ${env.JOB_NAME} ${env.BUILD_NUMBER} (<${env.BUILD_URL}|Open>)")
     }
     failure {
       slackSend (color: '#FF0000', failOnError:true, message:"Build failed  - ${env.JOB_NAME} ${env.BUILD_NUMBER} (<${env.BUILD_URL}|Open>)")

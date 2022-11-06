@@ -15,25 +15,11 @@ pipeline {
         }
 
 
-    stage('Verify') {
-        def userInput = input(
-            id: 'userInput', message: 'This is PRODUCTION!', parameters: [
-            [$class: 'BooleanParameterDefinition', defaultValue: false, description: '', name: 'Please confirm you sure to proceed']
-        ])
-        
-        if(!userInput) {
-            error "Build wasn't confirmed"
-        }
-    }
-
-
-
-
-
 
         stage('Building image') {
           steps{
             script {
+              input('Do you want to proceed?')
               dockerImage = docker.build("$registry:$BUILD_NUMBER")
               //dockerImage = docker.build("$registry:latest")
             }

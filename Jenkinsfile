@@ -35,7 +35,7 @@ pipeline {
       slackSend (color: '#FF0000', message: "Deployment failed: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]'")
     }
     always {
-      slackSend (color: '#ff3f05', message: "Deployment always: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]'")
+      slackSend (color: '#ff6800', message: "Deployment always: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]'")
     }    
   }
 }

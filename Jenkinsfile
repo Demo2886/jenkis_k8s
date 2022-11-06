@@ -13,7 +13,11 @@ pipeline {
                 sh 'kubectl get node'
             }
         }
-
+        
+        
+	     stage('Test Dockerfile hadolint') {
+            sh "docker run --rm -i hadolint/hadolint hadolint --ignore DL3013  --ignore DL3042  - < Dockerfile"
+         }
 
 
         stage('Building image') {

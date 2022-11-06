@@ -32,10 +32,7 @@ pipeline {
       slackSend (color: '#00FF00', message: "Deployment success: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]'")
     }
     failure {
-      slackSend (color: '#FF0000', message: "Deployment failed: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]'")
+      slackSend failOnError:true message:"Build failed  - ${env.JOB_NAME} ${env.BUILD_NUMBER} (<${env.BUILD_URL}|Open>)"
     }
-    always {
-      slackSend (color: '#ff6800', message: "Deployment always: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]'")
-    }    
   }
 }

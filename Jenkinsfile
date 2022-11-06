@@ -34,5 +34,8 @@ pipeline {
     failure {
       slackSend (color: '#FF0000', message: "Deployment failed: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]'")
     }
+    ABORTED {
+      slackSend (color: '#ff3f05', message: "Deployment ABORTED: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]'")
+    }    
   }
 }

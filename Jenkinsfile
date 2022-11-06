@@ -14,7 +14,7 @@ pipeline {
             }
         }
 
-	def verify() {
+
     stage('Verify') {
         def userInput = input(
             id: 'userInput', message: 'This is PRODUCTION!', parameters: [
@@ -25,7 +25,7 @@ pipeline {
             error "Build wasn't confirmed"
         }
     }
-}
+
 
 
 

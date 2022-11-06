@@ -8,7 +8,7 @@ pipeline {
     }
 	
     stages {
-        stage('Hello') {
+        stage('YES!!!!!!!!!!!!!!!!!!') {
             steps {
                 sh 'kubectl get node'
             }

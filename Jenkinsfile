@@ -23,4 +23,13 @@ pipeline {
           }
     }		
   }
+  
+    post {
+    success {
+      slackSend (color: '#00FF00', message: "Deployment success: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]'")
+    }
+    failure {
+      slackSend (color: '#FF0000', message: "Deployment failed: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]'")
+    }
+  }
 }

@@ -13,11 +13,15 @@ pipeline {
                 sh 'kubectl get node'
             }
         }
-        
+ 
+     stage('Clone repository') {
+        //git url:'https://github.com/Demo2886/add_k8s_test.git', branch:'master'
+        checkout scm
+    }        
         
 	     stage('Test Dockerfile hadolint') {
 	       steps {
-            sh "docker run --rm -i hadolint/hadolint hadolint --ignore DL3013  --ignore DL3042  < <Dockerfile>"
+            sh "docker run --rm -i hadolint/hadolint hadolint --ignore DL3013  --ignore DL3042  < Dockerfile"
             }
          }
 

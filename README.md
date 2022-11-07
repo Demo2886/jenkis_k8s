@@ -1,5 +1,9 @@
 # DevOps test assignment for IT Bootcamp participants!
 
+## For testing and quick setup of the K8s environment, I chose KIND.
+[KIND](https://github.com/kubernetes-sigs/kind)
+
+
 
 
 ## These command will copy the kubeconfig to the jenkins user root directory. After that re-run jenkins pipeline.

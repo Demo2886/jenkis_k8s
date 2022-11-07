@@ -3,10 +3,11 @@
 
 
 ## These command will copy the kubeconfig to the jenkins user root directory. After that re-run jenkins pipeline.
-'''bash
+
+```bash
 sudo cp ~/.kube/config ~jenkins/.kube/
 sudo chown -R jenkins: ~jenkins/.kube/
-'''
+```
 
 
 ## Final image

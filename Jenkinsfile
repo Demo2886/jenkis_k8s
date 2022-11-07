@@ -16,7 +16,7 @@ pipeline {
  
       stage('Test Dockerfile hadolint') {
               steps{
-            sh "docker run --rm -i hadolint/hadolint hadolint  < Dockerfile"
+            sh "docker run --rm -i hadolint/hadolint < Dockerfile"
   }
       }	
 

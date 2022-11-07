@@ -6,7 +6,7 @@ Repository links >> [KIND](https://github.com/kubernetes-sigs/kind)!!!
 
 
 
-## These command will copy the kubeconfig to the jenkins user root directory. After that re-run jenkins pipeline.
+## This command will copy kubeconfig to the root directory of the jenkins user. After that, you can use ```bash kubectl``` using the jenkins pipeline.
 
 ```bash
 sudo cp ~/.kube/config ~jenkins/.kube/

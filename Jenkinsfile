@@ -14,15 +14,11 @@ pipeline {
             }
         }
  
-	     stage('Test Dockerfile hadolint') {
-		     agent {
-               docker { image 'hadolint/hadolint' }
-               }
-			     steps {
-                   sh 'hadolint --ignore DL3013  --ignore DL3042  - < Dockerfile'
-                 }
-            //sh "docker run --rm -i hadolint/hadolint hadolint --ignore DL3013  --ignore DL3042  - < Dockerfile"
-         }
+    docker.image('hadolint/hadolint').inside {
+        stage('Test Dockerfile hadolint') {
+            sh 'hadolint --ignore DL3013  --ignore DL3042  - < Dockerfile'
+        }
+    }
 
 
         stage('Building image') {

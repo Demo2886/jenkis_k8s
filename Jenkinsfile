@@ -39,6 +39,7 @@ pipeline {
     }
     
     stage('Push Image to repo') {
+            steps {
             script {
                 docker.withRegistry('https://registry.hub.docker.com', registryCredential) {
                     //dockerImage.push("${env.BUILD_NUMBER}")
@@ -46,9 +47,10 @@ pipeline {
                 }	
             }    	
         } 
-    
+    }
     		
-  }
+
+    }    		
   
     post {
     success {

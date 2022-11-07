@@ -21,7 +21,7 @@ pipeline {
         script {
           try {
           echo "Linting Dockerfile..."
-          sh 'hadolint --ignore DL3018 --ignore DL3013 --ignore DL3019 --ignore DL4003 Dockerfile > lint_report.txt'
+          sh 'hadolint --ignore DL3018 --ignore DL3013 --ignore DL3019 --ignore DL4003 Dockerfile > ./lint_report.txt'
           archiveArtifacts artifacts: 'lint_report.txt'
           } catch (Exception err) {
             stagestatus.dockerfile_lint = "Linting failure"

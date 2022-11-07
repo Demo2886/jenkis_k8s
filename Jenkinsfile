@@ -31,9 +31,10 @@ pipeline {
         steps {
               sh "docker run -p 8001:8000 -d $registry:latest"
 	          //sh "docker run -p 8002:8003 -d $registry:$BUILD_NUMBER"
+	          sleep 5
 	          sh "curl http://127.0.0.1:8001"
                   sh "docker ps -q --filter ancestor=jokercat2886/test-jenkins | xargs docker stop"
-                  sh "docker rm $docker_rm"
+                  //sh "docker rm $docker_rm"
         }
     }
     

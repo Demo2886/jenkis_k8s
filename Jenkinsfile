@@ -19,10 +19,11 @@ pipeline {
 
         stage('Building image') {
           steps{
+            script {
               //input('Do you want to proceed?')
               //dockerImage = docker.build("$registry:$BUILD_NUMBER")
               docker.build("$registry:latest")
-
+            }
           }
     }
     

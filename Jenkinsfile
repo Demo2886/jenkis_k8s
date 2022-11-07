@@ -14,14 +14,10 @@ pipeline {
             }
         }
  
-node {
-    /* Requires the Docker Pipeline plugin to be installed */
-    docker.image('hadolint/hadolint').inside {
-        stage('Test Dockerfile hadolint') {
-            sh 'hadolint --ignore DL3013  --ignore DL3042  - < Dockerfile'
-        }
-    }
-}
+      stage('Test Dockerfile hadolint') {
+            sh "docker run --rm -i hadolint/hadolint hadolint --ignore DL3013  --ignore DL3042  - < Dockerfile"
+  
+      }	
 
 
         stage('Building image') {

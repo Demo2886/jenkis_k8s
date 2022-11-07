@@ -47,12 +47,12 @@ pipeline {
 //================================================================================================
     stage('Apply Kubernetes files') {
 	steps {
-      withKubeConfig([credentialsId: 'kubernetes']) {
+      //withKubeConfig([credentialsId: 'kubernetes']) {
         sh 'kubectl get namespace | grep -q "^pre-prod " || kubectl create namespace pre-prod'
         sh 'kubectl apply -f k8s_bom.yaml --namespace=pre-prod'
         sleep 4
         sh 'kubectl get pods --namespace=pre-prod'
-      }
+      //}
     }
 	}
     
@@ -69,14 +69,14 @@ pipeline {
             }
             try{
               if(depl){
-              withKubeConfig([credentialsId: 'kubernetes']) {
+              //withKubeConfig([credentialsId: 'kubernetes']) {
                 sh 'kubectl get namespace | grep -q "^prod " || kubectl create namespace prod'
                 sh 'kubectl apply -f k8s_bom.yaml'
                 sleep 4
                 sh 'kubectl get pods --namespace=prod'
                 sh 'kubectl delete -f k8s_bom.yaml --namespace=pre-prod'
                 sh 'kubectl delete namespace pre-prod'
-              }
+              //}
               }
             }
             catch(Exception err){

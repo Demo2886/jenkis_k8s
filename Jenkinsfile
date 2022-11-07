@@ -15,8 +15,9 @@ pipeline {
         }
  
       stage('Test Dockerfile hadolint') {
+              steps{
             sh "docker run --rm -i hadolint/hadolint hadolint --ignore DL3013  --ignore DL3042  - < Dockerfile"
-  
+  }
       }	
 
 

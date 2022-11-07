@@ -8,11 +8,7 @@ pipeline {
     }
 	
     stages {
-        stage('YES!!!!!!!!!!!!!!!!!!') {
-            steps {
-                sh 'kubectl get node'
-            }
-        }
+
  
       stage('Test Dockerfile hadolint') {
               steps{
@@ -23,13 +19,25 @@ pipeline {
 
         stage('Building image') {
           steps{
-            script {
               //input('Do you want to proceed?')
               //dockerImage = docker.build("$registry:$BUILD_NUMBER")
               docker.build("$registry:latest")
-            }
+
           }
-    }		
+    }
+    
+        stage('Test image') {
+        steps {
+              sh "docker run -p 8001:8000 -d $registry:latest"
+	          //sh "docker run -p 8002:8003 -d $registry:$BUILD_NUMBER"
+	          sh "curl http://127.0.0.1:8001"
+	          //sh "docker stop $docker_stop"
+        }
+    }
+    
+    
+    
+    		
   }
   
     post {

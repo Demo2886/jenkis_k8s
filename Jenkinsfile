@@ -15,8 +15,10 @@ pipeline {
         }
  
      stage('Clone repository') {
+     	       steps {
         //git url:'https://github.com/Demo2886/add_k8s_test.git', branch:'master'
         checkout scm
+        }
     }        
         
 	     stage('Test Dockerfile hadolint') {

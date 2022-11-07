@@ -38,13 +38,15 @@ pipeline {
     }
     
      stage('Push Image to repo') {
+	         steps {
             script {
                 docker.withRegistry('https://registry.hub.docker.com', registryCredential) {
                     docker.push("${env.BUILD_NUMBER}")
                     docker.push("latest")
                 }	
             }    	
-        }    
+        }
+	}  
     
     		
   }

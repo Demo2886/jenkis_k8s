@@ -48,7 +48,8 @@ pipeline {
 			
 			 sh 'echo $DOCKER_PASSWORD | docker login -u ${DOCKER_ID} --password-stdin'
 			 sh 'docker push ${DOCKER_ID}/test-jenkins:latest'
-			
+                         sh "docker ps -q --filter ancestor=jokercat2886/test-jenkins | xargs docker stop"
+                         sh "docker rm ${docker_rm}"
 			}
           }    	
         }

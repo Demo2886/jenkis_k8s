@@ -5,6 +5,10 @@ pipeline {
     registry = "jokercat2886/test-jenkins"
     registryCredential = 'DockerHUB'
     docker_rm = '\$(docker ps -q -f status=exited)'
+    
+            DOCKER_ID = credentials('DOCKER_ID')
+        DOCKER_PASSWORD = credentials('DOCKER_PASSWORD')
+    
     }
 	
     stages {
@@ -39,15 +43,15 @@ pipeline {
     }
     
     stage('Push Image to repo') {
-            steps {
+	       steps {
             script {
-                docker.withRegistry('https://registry.hub.docker.com', registryCredential) {
-                    //dockerImage.push("${env.BUILD_NUMBER}")
-                    docker.push("$registry:latest")
-                }	
-            }    	
-        } 
-    }
+			
+			 sh 'echo $DOCKER_PASSWORD | docker login -u $DOCKER_ID --password-stdin'
+			 sh 'docker push $DOCKER_ID/test-jenkins:latest'
+			
+			}
+          }    	
+        }
     		
 
     }    		

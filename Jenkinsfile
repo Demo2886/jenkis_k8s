@@ -17,8 +17,7 @@ pipeline {
         
 	     stage('Test Dockerfile hadolint') {
 	       steps {
-            //sh "docker run --rm -i hadolint/hadolint hadolint --ignore DL3013  --ignore DL3042  - < ./Dockerfile"
-            sh "podman run --rm -i docker.io/hadolint/hadolint < Dockerfile"
+            sh "docker run --rm -i hadolint/hadolint hadolint --ignore DL3013  --ignore DL3042  - < Dockerfile"
             }
          }
 

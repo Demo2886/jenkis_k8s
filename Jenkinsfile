@@ -3,7 +3,7 @@ pipeline {
 
     environment {
     registry = "jokercat2886/test-jenkins"
-    registryCredential = 'docker'
+    registryCredential = 'DockerHUB'
     docker_rm = '\$(docker ps -q -f status=exited)'
     }
 	

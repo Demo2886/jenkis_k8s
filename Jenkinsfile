@@ -38,21 +38,14 @@ pipeline {
         }
     }
     
-     stage('Push Image to repo') {
-	         steps {
+    stage('Push Image to repo') {
             script {
-                        
-            sh "docker push jokercat2886/test-jenkins:latest"	
-            sh "docker ps -q --filter ancestor=jokercat2886/test-jenkins | xargs docker stop"   
-            
-            
-                //docker.withRegistry('https://registry.hub.docker.com', registryCredential) {
-                    //docker.push("${env.BUILD_NUMBER}")
-                    //docker.push("latest")
-                //}	
+                docker.withRegistry('https://registry.hub.docker.com', registryCredential) {
+                    //dockerImage.push("${env.BUILD_NUMBER}")
+                    dockerImage.push("$registry:latest")
+                }	
             }    	
-        }
-	}  
+        } 
     
     		
   }

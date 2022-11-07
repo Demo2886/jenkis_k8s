@@ -1,4 +1,4 @@
-# DevOps test assignment for IT Bootcamp participants!
+# Completing a DevOps test task for IT Bootcamp participants!
 
 ### For testing and quick setup of the K8s environment, I chose KIND.
 Repository links >> [KIND](https://github.com/kubernetes-sigs/kind)!!!

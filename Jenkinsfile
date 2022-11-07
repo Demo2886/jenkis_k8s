@@ -6,7 +6,7 @@ pipeline {
     registryCredential = 'DockerHUB'
     docker_rm = '\$(docker ps -q -f status=exited)'
     
-            DOCKER_ID = credentials('DOCKER_ID')
+        DOCKER_ID = credentials('DOCKER_ID')
         DOCKER_PASSWORD = credentials('DOCKER_PASSWORD')
     
     }
@@ -26,7 +26,7 @@ pipeline {
             script {
               //input('Do you want to proceed?')
               //dockerImage = docker.build("$registry:$BUILD_NUMBER")
-              docker.build("$registry:latest")
+              docker.build("${registry}:latest")
             }
           }
     }
@@ -46,8 +46,8 @@ pipeline {
 	       steps {
             script {
 			
-			 sh 'echo $DOCKER_PASSWORD | docker login -u $DOCKER_ID --password-stdin'
-			 sh 'docker push $DOCKER_ID/test-jenkins:latest'
+			 sh 'echo $DOCKER_PASSWORD | docker login -u ${DOCKER_ID} --password-stdin'
+			 sh 'docker push ${DOCKER_ID}/test-jenkins:latest'
 			
 			}
           }    	
